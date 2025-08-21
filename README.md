@@ -11,13 +11,9 @@ A simple dummy UI for the Soundness Layer vApp proposal.
 - Installation
   ```bash
   git clone https://github.com/Rosellines/my-discord-proof-soundness
-
-```bash
-cd my-discord-proof
-
-```bash
-npm install
-npm run dev
+  cd my-discord-proof-soundness
+  npm install
+  npm run dev
 
 ## run
 http://localhost:3000
