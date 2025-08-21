@@ -10,7 +10,7 @@ A simple dummy UI for the Soundness Layer vApp proposal.
 ## Run locally
 - Installation
   ```bash
-  git clone https://github.com/Rosellines/my-discord-proof
+  git clone https://github.com/Rosellines/my-discord-proof-soundness
 
 ```bash
 cd my-discord-proof
