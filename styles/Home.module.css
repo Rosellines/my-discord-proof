@@ -1,99 +1,36 @@
 .container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  background-color: #36393f;
-  color: #fff;
-  font-family: Helvetica, Arial, sans-serif;
-  padding: 1rem;
+  justify-content: center;
+  height: 100vh;
+  background-color: #36393f; /* dark Discord bg */
+  color: white;
+  text-align: center;
 }
 
-h1 {
+.logo {
+  width: 150px;
+  margin-bottom: 20px;
+}
+
+/* tambahkan class untuk h1 */
+.title {
   margin-bottom: 2rem;
 }
 
 .discordButton {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
   background-color: #5865f2;
   color: white;
   border: none;
-  border-radius: 12px;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+  transition: all 0.2s ease-in-out;
 }
 
 .discordButton:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
-  filter: brightness(1.2);
-}
-
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.3s ease;
-}
-
-.modalContent {
-  background-color: #2f3136;
-  padding: 2rem;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  color: #fff;
-  transform: translateY(-20px);
-  animation: slideDown 0.3s forwards;
-}
-
-.modalContent pre {
-  text-align: left;
-  background: #202225;
-  padding: 1rem;
-  border-radius: 8px;
-  font-family: monospace;
-  overflow-x: auto;
-}
-
-.copyButton {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #43b581;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.closeButton {
-  margin-top: 1rem;
-  margin-left: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: #f04747;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@keyframes slideDown {
-  from {transform: translateY(-30px);}
-  to {transform: translateY(0);}
+  background-color: #4752c4;
 }
