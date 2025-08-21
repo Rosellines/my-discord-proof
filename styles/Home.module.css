@@ -1,57 +1,73 @@
-/* tombol login dengan neon pulse */
-.discordButton {
-  background-color: #5865f2;
-  color: white;
-  border: none;
-  padding: 20px 50px;
-  border-radius: 12px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 0 10px #5865f2, 0 0 20px #5865f2, 0 0 30px #5865f2;
-  animation: pulseGlow 2s infinite;
-}
+import { useState } from "react";
+import styles from "../styles/Home.module.css";
 
-.discordButton:hover {
-  transform: scale(1.08);
-  background-color: #4752c4;
-}
+export default function Home() {
+  const [proof, setProof] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-/* tombol copy proof */
-.copyButton {
-  background-color: #57f287;
-  color: #2f3136;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  margin-top: 15px;
-  cursor: pointer;
-  box-shadow: 0 0 5px #57f287, 0 0 15px #57f287;
-  animation: pulseGlow 2.5s infinite alternate;
-}
+  const handleDiscordLogin = () => {
+    setLoading(true);
+    setShowModal(true);
 
-/* tombol close */
-.closeButton {
-  background-color: #ed4245;
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  margin-top: 20px;
-  cursor: pointer;
-  box-shadow: 0 0 5px #ed4245, 0 0 15px #ed4245;
-  animation: pulseGlow 3s infinite alternate;
-}
+    setTimeout(() => {
+      const dummyProof = {
+        user: "Rosellines#0001",
+        discordId: "1289133727443582988",
+        membership: "verified",
+        proof: "0xFAKEZKPROOF1234567890",
+        timestamp: new Date().toISOString(),
+      };
+      setProof(dummyProof);
+      setLoading(false);
+    }, 2000);
+  };
 
-/* animasi pulse glow */
-@keyframes pulseGlow {
-  0% {
-    box-shadow: 0 0 5px currentColor, 0 0 15px currentColor;
-  }
-  50% {
-    box-shadow: 0 0 15px currentColor, 0 0 25px currentColor;
-  }
-  100% {
-    box-shadow: 0 0 5px currentColor, 0 0 15px currentColor;
-  }
+  const copyProof = () => {
+    navigator.clipboard.writeText(JSON.stringify(proof, null, 2));
+    alert("Proof copied!");
+  };
+
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Discord Identity PoC</h1>
+
+      <button
+        className={styles.discordButton}
+        onClick={handleDiscordLogin}
+        disabled={loading}
+      >
+        {loading ? "Generating proof..." : "Login with Discord"}
+      </button>
+
+      {showModal && (
+        <div className={styles.modalOverlay}>
+          <div className={styles.modalContent}>
+            <h2>Dummy Proof Generated</h2>
+            {loading ? (
+              <>
+                <div className={styles.skeleton}></div>
+                <div className={styles.skeleton}></div>
+                <div className={styles.skeleton}></div>
+                <p>Loading proof...</p>
+              </>
+            ) : (
+              <>
+                <pre>{JSON.stringify(proof, null, 2)}</pre>
+                <button className={styles.copyButton} onClick={copyProof}>
+                  Copy Proof
+                </button>
+              </>
+            )}
+            <button
+              className={styles.closeButton}
+              onClick={() => setShowModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
