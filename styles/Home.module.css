@@ -1,21 +1,35 @@
-/* container utama */
+/* container utama full center */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #36393f; /* warna gelap ala Discord */
+  background: linear-gradient(135deg, #7289da, #99aab5);
+  font-family: 'Whitney', 'Arial', sans-serif;
   color: white;
   text-align: center;
-  font-family: 'Arial', sans-serif;
+  overflow: hidden;
   padding: 20px;
 }
 
-/* judul h1 */
+/* overlay blur tambahan */
+.container::before {
+  content: "";
+  position: absolute;
+  top:0; left:0;
+  width: 100%; height: 100%;
+  background: url("/bg-discord.jpg") center/cover no-repeat;
+  opacity: 0.2;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+/* judul */
 .title {
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  text-shadow: 0 0 15px #5865f2, 0 0 25px #5865f2;
 }
 
 /* tombol login Discord */
@@ -23,27 +37,27 @@
   background-color: #5865f2;
   color: white;
   border: none;
-  padding: 15px 30px;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 20px 50px;
+  border-radius: 12px;
+  font-size: 18px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .discordButton:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
   background-color: #4752c4;
 }
 
-/* overlay modal */
+/* modal overlay */
 .modalOverlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0,0,0,0.75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,12 +67,23 @@
 /* konten modal */
 .modalContent {
   background-color: #2f3136;
-  padding: 30px;
-  border-radius: 10px;
+  padding: 35px;
+  border-radius: 12px;
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
   text-align: center;
   color: white;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* skeleton loading multi-line */
+.skeleton {
+  width: 100%;
+  height: 20px;
+  background-color: #44475a;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  animation: pulse 1.5s infinite;
 }
 
 /* tombol copy proof */
@@ -66,9 +91,9 @@
   background-color: #57f287;
   color: #2f3136;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 10px;
+  padding: 12px 25px;
+  border-radius: 8px;
+  margin-top: 15px;
   cursor: pointer;
 }
 
@@ -81,12 +106,19 @@
   background-color: #ed4245;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 15px;
+  padding: 12px 25px;
+  border-radius: 8px;
+  margin-top: 20px;
   cursor: pointer;
 }
 
 .closeButton:hover {
   background-color: #d93639;
+}
+
+/* animasi pulse skeleton */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
 }
