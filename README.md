@@ -8,6 +8,19 @@ A simple dummy UI for the Soundness Layer vApp proposal.
 - Minimal Next.js project.
 
 ## Run locally
+- Installation
+  ```bash
+  git clone https://github.com/Rosellines/my-discord-proof
+
+```bash
+cd my-discord-proof
+
 ```bash
 npm install
 npm run dev
+
+## run
+http://localhost:3000
+
+image1.jpg
+image2.jpg
