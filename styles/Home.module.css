@@ -1,73 +1,175 @@
-import { useState } from "react";
-import styles from "../styles/Home.module.css";
 
-export default function Home() {
-  const [proof, setProof] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: radial-gradient(60% 80% at 50% 20%, rgba(88,101,242,0.15), transparent 60%),
+              linear-gradient(180deg, #0b0f1a 0%, #0b0f1a 100%);
+  color: #e5e7eb;
+}
 
-  const handleDiscordLogin = () => {
-    setLoading(true);
-    setShowModal(true);
+.card {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(17, 24, 39, 0.7);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  padding: 1.25rem;
+}
 
-    setTimeout(() => {
-      const dummyProof = {
-        user: "Rosellines#0001",
-        discordId: "1289133727443582988",
-        membership: "verified",
-        proof: "0xFAKEZKPROOF1234567890",
-        timestamp: new Date().toISOString(),
-      };
-      setProof(dummyProof);
-      setLoading(false);
-    }, 2000);
-  };
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
 
-  const copyProof = () => {
-    navigator.clipboard.writeText(JSON.stringify(proof, null, 2));
-    alert("Proof copied!");
-  };
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
 
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Discord Identity PoC</h1>
+.subtitle {
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
 
-      <button
-        className={styles.discordButton}
-        onClick={handleDiscordLogin}
-        disabled={loading}
-      >
-        {loading ? "Generating proof..." : "Login with Discord"}
-      </button>
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
 
-      {showModal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent}>
-            <h2>Dummy Proof Generated</h2>
-            {loading ? (
-              <>
-                <div className={styles.skeleton}></div>
-                <div className={styles.skeleton}></div>
-                <div className={styles.skeleton}></div>
-                <p>Loading proof...</p>
-              </>
-            ) : (
-              <>
-                <pre>{JSON.stringify(proof, null, 2)}</pre>
-                <button className={styles.copyButton} onClick={copyProof}>
-                  Copy Proof
-                </button>
-              </>
-            )}
-            <button
-              className={styles.closeButton}
-              onClick={() => setShowModal(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-    </div>
-  );
+.button {
+  padding: 0.7rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.09);
+  background: #5865F2;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .04s ease, filter .2s ease, opacity .2s ease;
+}
+
+.button.secondary {
+  background: transparent;
+  color: #e5e7eb;
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button:active { transform: translateY(1px); }
+
+.proofBox {
+  margin-top: 1rem;
+  background: rgba(31,41,55,0.6);
+  border: 1px dashed rgba(255,255,255,0.15);
+  border-radius: 12px;
+  padding: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 6px 10px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+}
+
+.kv label {
+  color: #9ca3af;
+}
+
+.footer {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* Modal */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal {
+  width: 100%;
+  max-width: 560px;
+  background: #0f172a;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.closeButton {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: #e5e7eb;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.input {
+  background: rgba(17,24,39,0.7);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #e5e7eb;
+}
+
+.help {
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.copyRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.code {
+  flex: 1;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  background: rgba(31,41,55,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 10px;
 }
