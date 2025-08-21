@@ -28,21 +28,36 @@ export default function Home() {
   };
 
   return (
-    <div style={{ padding: "2rem", fontFamily: "sans-serif" }}>
-      <h1>Discord Identity PoC</h1>
-      <p>Prove your Discord membership without revealing private info.</p>
+    <div
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#36393f",
+        color: "#ffffff",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontFamily: "Helvetica, Arial, sans-serif",
+        flexDirection: "column",
+        padding: "1rem",
+      }}
+    >
+      <h1 style={{ marginBottom: "2rem" }}>Discord Identity PoC</h1>
 
       <button
         onClick={handleDiscordLogin}
         style={{
           padding: "1rem 2rem",
-          background: "#7289da",
+          fontSize: "1.2rem",
+          backgroundColor: "#5865f2", // Discord blurple
           color: "white",
           border: "none",
-          borderRadius: "8px",
+          borderRadius: "12px",
           cursor: "pointer",
-          marginTop: "1rem",
+          boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+          transition: "transform 0.1s",
         }}
+        onMouseDown={(e) => (e.target.style.transform = "scale(0.95)")}
+        onMouseUp={(e) => (e.target.style.transform = "scale(1)")}
       >
         {loading ? "Generating proof..." : "Login with Discord"}
       </button>
@@ -55,7 +70,7 @@ export default function Home() {
             left: 0,
             width: "100vw",
             height: "100vh",
-            background: "rgba(0,0,0,0.5)",
+            background: "rgba(0,0,0,0.6)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
@@ -64,15 +79,16 @@ export default function Home() {
         >
           <div
             style={{
-              background: "white",
+              backgroundColor: "#2f3136",
               padding: "2rem",
-              borderRadius: "10px",
+              borderRadius: "12px",
               width: "90%",
               maxWidth: "500px",
               textAlign: "center",
+              color: "#ffffff",
             }}
           >
-            <h2>Dummy Proof Generated</h2>
+            <h2 style={{ marginBottom: "1rem" }}>Dummy Proof Generated</h2>
             {loading ? (
               <p>Loading proof...</p>
             ) : (
@@ -80,9 +96,9 @@ export default function Home() {
                 <pre
                   style={{
                     textAlign: "left",
-                    background: "#f5f5f5",
+                    background: "#202225",
                     padding: "1rem",
-                    borderRadius: "6px",
+                    borderRadius: "8px",
                     fontFamily: "monospace",
                     overflowX: "auto",
                   }}
@@ -94,10 +110,10 @@ export default function Home() {
                   style={{
                     marginTop: "1rem",
                     padding: "0.5rem 1rem",
-                    background: "#43b581",
+                    backgroundColor: "#43b581", // green Discord button
                     color: "white",
                     border: "none",
-                    borderRadius: "6px",
+                    borderRadius: "8px",
                     cursor: "pointer",
                   }}
                 >
@@ -110,10 +126,10 @@ export default function Home() {
               style={{
                 marginTop: "1rem",
                 padding: "0.5rem 1rem",
-                background: "#f04747",
+                backgroundColor: "#f04747", // red Discord button
                 color: "white",
                 border: "none",
-                borderRadius: "6px",
+                borderRadius: "8px",
                 cursor: "pointer",
                 marginLeft: "0.5rem",
               }}
