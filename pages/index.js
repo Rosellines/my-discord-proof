@@ -1,49 +1,52 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [proof, setProof] = useState(null);
+  const [verified, setVerified] = useState(false);
 
   const handleLogin = () => {
-    // Dummy flow: langsung set login
-    setLoggedIn(true);
-    setProof("DummyProof_123xyz");
+    // Simulasi proof generation
+    setVerified(true);
   };
 
   return (
-    <div style={{ 
-      minHeight: "100vh", 
-      display: "flex", 
-      flexDirection: "column", 
-      justifyContent: "center", 
+    <div style={{
+      display: "flex",
+      flexDirection: "column",
       alignItems: "center",
+      justifyContent: "center",
+      height: "100vh",
       fontFamily: "Arial, sans-serif",
-      background: "#0f172a", 
-      color: "#f1f5f9"
+      backgroundColor: "#f0f2f5"
     }}>
       <h1>Proof-of-Discord Identity</h1>
-      {!loggedIn ? (
-        <button 
-          onClick={handleLogin} 
+      <p>Simulate Discord membership verification</p>
+
+      {!verified ? (
+        <button
+          onClick={handleLogin}
           style={{
             padding: "10px 20px",
-            borderRadius: "8px",
-            border: "none",
-            background: "#5865F2",
-            color: "white",
             fontSize: "16px",
-            cursor: "pointer"
+            borderRadius: "5px",
+            border: "none",
+            backgroundColor: "#5865F2",
+            color: "white",
+            cursor: "pointer",
+            marginTop: "20px"
           }}
         >
           Login with Discord
         </button>
       ) : (
-        <div style={{ marginTop: "20px", textAlign: "center" }}>
-          <h2>✅ Logged in!</h2>
-          <p>Generated Proof (dummy):</p>
-          <code style={{ background: "#1e293b", padding: "6px 10px", borderRadius: "6px" }}>
-            {proof}
-          </code>
+        <div style={{
+          marginTop: "20px",
+          padding: "15px",
+          borderRadius: "5px",
+          backgroundColor: "#43b581",
+          color: "white",
+          fontWeight: "bold"
+        }}>
+          Success! You proved your Discord membership.
         </div>
       )}
     </div>
