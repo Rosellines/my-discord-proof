@@ -1,24 +1,24 @@
+/* container utama */
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #36393f; /* dark Discord bg */
+  background-color: #36393f; /* warna gelap ala Discord */
   color: white;
   text-align: center;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
 }
 
-.logo {
-  width: 150px;
-  margin-bottom: 20px;
-}
-
-/* tambahkan class untuk h1 */
+/* judul h1 */
 .title {
   margin-bottom: 2rem;
+  font-size: 2.5rem;
 }
 
+/* tombol login Discord */
 .discordButton {
   background-color: #5865f2;
   color: white;
@@ -28,9 +28,65 @@
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  margin-bottom: 1rem;
 }
 
 .discordButton:hover {
   transform: scale(1.05);
   background-color: #4752c4;
+}
+
+/* overlay modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* konten modal */
+.modalContent {
+  background-color: #2f3136;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  color: white;
+}
+
+/* tombol copy proof */
+.copyButton {
+  background-color: #57f287;
+  color: #2f3136;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.copyButton:hover {
+  background-color: #45d36a;
+}
+
+/* tombol close modal */
+.closeButton {
+  background-color: #ed4245;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: #d93639;
 }
