@@ -18,5 +18,5 @@ A simple dummy UI for the Soundness Layer vApp proposal.
 ## run
 http://localhost:3000
 
-![soundness](image1.jpg)
-![soundness](image2.jpg)
+![soundness](image1.png)
+![soundness](image2.png)
