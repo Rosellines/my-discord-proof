@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "../styles/Home.module.css"; // kita buat CSS module
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const [proof, setProof] = useState(null);
@@ -20,7 +20,7 @@ export default function Home() {
       };
       setProof(dummyProof);
       setLoading(false);
-    }, 1500);
+    }, 2000);
   };
 
   const copyProof = () => {
@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h1>Discord Identity PoC</h1>
+      <h1 className={styles.title}>Discord Identity PoC</h1>
 
       <button
         className={styles.discordButton}
@@ -45,7 +45,12 @@ export default function Home() {
           <div className={styles.modalContent}>
             <h2>Dummy Proof Generated</h2>
             {loading ? (
-              <p>Loading proof...</p>
+              <>
+                <div className={styles.skeleton}></div>
+                <div className={styles.skeleton}></div>
+                <div className={styles.skeleton}></div>
+                <p>Loading proof...</p>
+              </>
             ) : (
               <>
                 <pre>{JSON.stringify(proof, null, 2)}</pre>
